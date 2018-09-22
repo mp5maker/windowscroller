@@ -52,7 +52,7 @@
         /**
          * Listen to the scroll
          */
-        window.addEventListener('scroll', _.throttle(
+        window.addEventListener('scroll', 
             function() {
                 console.log("%c Document Height: " + $scope.documentHeight(), "background-color: silver; color: black");
                 console.log("%c Window Height: " + ($scope.windowHeight() + $scope.scrollTop()), "background-color: black; color: white");
@@ -60,12 +60,12 @@
                  * Checks whether the window height is nearby the document height
                  */
                 if(($scope.windowHeight() + $scope.scrollTop()) > ($scope.documentHeight() - 200)) {
-                    $scope.getData();
                     console.log("%c Nearby Bottom: " + ($scope.windowHeight() + $scope.scrollTop()), "background-color: firebrick; color: white");
+                    $scope.getData();
                 }else {
                     $scope.nearBottom = false;
                 }
-
+                
                 /**
                  * Checks whether the window height is exactly the document height
                  */
@@ -75,7 +75,7 @@
                 } else {
                     $scope.bottom = false;
                 }
-            }, 500)
+            }
         );
 
         /**
@@ -97,7 +97,7 @@
             }
         });
     })
-    .directive('windowScroller', function(){
+    .directive('windowScroller', function($window, $interval){
         return {
             templateUrl: "window-scroller.html",
             controller: function($scope) {
@@ -108,8 +108,14 @@
                     if($scope.isClicked) {
                         $scope.addStyle();
                         $scope.scrollToBottom();
+                        $scope.windowBinder();
+                        $scope.interval = $interval(function(){
+                            window.scrollBy(0, 1000);
+                        }, 1000);
                     }else {
                         $scope.removeStyle();
+                        angular.element($window).off('scroll');
+                        $interval.cancel($scope.interval);
                     }
                 };
 
@@ -117,9 +123,8 @@
                     console.log("Near Bottom");
                     if(newvalue && !oldvalue && $scope.isClicked) {
                         $scope.scrollToBottom();
-                    } else {
-                        
-                    }
+                        $scope.windowBinder();
+                    } 
                 });
 
                 $scope.addStyle = function() {
@@ -134,6 +139,16 @@
                     $("html, body").animate({ 
                             scrollTop: $scope.documentHeight() + $scope.documentHeight()
                         }, "slow");
+                }
+
+                $scope.windowBinder = function() {
+                    angular.element($window).off().on("scroll", _.throttle(
+                        function () {
+                            if (($scope.windowHeight() + $scope.scrollTop()) > ($scope.documentHeight() - 200)) {
+                                $scope.scrollToBottom();
+                            }
+                        }, 1000)
+                    );
                 }
             }
         }
