@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Window Scroller Implementation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./node_modules/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./node_modules/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body ng-app="scroller">
+    <div class="container-fluid" ng-controller="mainCtrl">
+        <div class="row">
+            <div class="col my-3 text-center">
+                <h5> Implementing Window Scroller using JSON Placeholder</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col my-3 text-center" ng-repeat="photo in photos">
+                <div class="card">
+                    <img ng-src="{{ photo.url }}" class="card-img-top" style="height: 600px; width: 600px;"/>
+                    <div class="card-body">
+                        <div class="card-title">
+                            {{ photo.title }}
+                        </div>
+                        <div class="card-text">
+                            Photo Id: {{ photo.id }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a ng-href="{{ photo.url }}" class="card-link">
+                            {{ photo.title }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <window-scroller></window-scroller>
+    </div>
+    <script src="./node_modules/underscore/underscore.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/popper.js/dist/umd/popper.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./node_modules/angular/angular.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

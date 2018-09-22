@@ -1,0 +1,30 @@
+{
+  "name": "windowscroller",
+  "version": "1.0.0",
+  "description": "```bash\r     npm install --save jquery popper.js bootstrap\r ```",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mp5maker/windowscroller.git"
+  },
+  "keywords": [],
+  "author": "Shabuktagin Photon Khan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mp5maker/windowscroller/issues"
+  },
+  "homepage": "https://github.com/mp5maker/windowscroller#readme",
+  "devDependencies": {
+    "angular": "^1.7.4",
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.4"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "underscore": "^1.9.1"
+  }
+}

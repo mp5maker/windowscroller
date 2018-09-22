@@ -1,0 +1,70 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#window-scroller-outer {
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 3px solid lightgray;
+}
+
+#window-scroller {
+    position: relative;
+    left: 12px;
+    top: 8px;
+}
+
+#window-scroller-outer:hover {
+    animation: spinner 0.7s linear infinite;
+}
+
+@keyframes spinner{
+  0%{
+        border-top-color: coral;
+  }33%{
+        border-right-color: coral;
+  }67%{
+        border-bottom-color: coral;
+  }100%{
+        border-left-color: coral;
+  }
+}
+
+.window-scroller-activated {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0)
+    } 10% {
+        transform: translateY(0)
+    } 20% {
+        transform: translateY(5px)
+    } 30% {
+        transform: translateY(0)
+    } 40% {
+        transform: translateY(0)
+    } 50% {
+        transform: translateY(5px)
+    } 60% {
+        transform: translateY(0)
+    } 70% {
+        transform: translateY(0)
+    } 80% {
+        transform: translateY(5px)
+    } 90% {
+        transform: translateY(0)
+    } 100% {
+        transform: translateY(0)
+    }
+}
+
+
+
