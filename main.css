@@ -12,6 +12,7 @@ body, html {
     width: 50px;
     border-radius: 50%;
     border: 3px solid lightgray;
+    transition: all linear 1s;
 }
 
 #window-scroller {
@@ -22,18 +23,20 @@ body, html {
 
 #window-scroller-outer:hover {
     animation: spinner 0.7s linear infinite;
+    box-shadow: 0 4px 8px 0 coral;
+    transition: all linear 1s;
 }
 
 @keyframes spinner{
-  0%{
+    0%{
         border-top-color: coral;
-  }33%{
+    }33%{
         border-right-color: coral;
-  }67%{
+    }67%{
         border-bottom-color: coral;
-  }100%{
+    }100%{
         border-left-color: coral;
-  }
+    }
 }
 
 .window-scroller-activated {
@@ -66,5 +69,17 @@ body, html {
     }
 }
 
+#window-scroller.fa-chevron-up, 
+#window-scroller.fa-chevron-up {
+    animation: fadein linear 1s;
+}
+
+@keyframes fadein {
+    0%{
+        opacity: 0;
+    }100%{
+        opacity: 1;
+    }
+}
 
 
