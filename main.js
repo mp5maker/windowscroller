@@ -79,16 +79,6 @@
         );
 
         /**
-         * Window Height greater than document height - 100 
-         * Set nearBottom to true
-         */
-        if($scope.windowHeight() + $scope.scrollTop() > $scope.documentHeight() - 100) {
-            $scope.nearBottom = true;
-        }else {
-            $scope.nearBottom = false;
-        }
-
-        /**
          * If the document is nearby the end of the document get more data
          */
         $scope.$watch('nearBottom', function(newvalue, oldvalue) {
